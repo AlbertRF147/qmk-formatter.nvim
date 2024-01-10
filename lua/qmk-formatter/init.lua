@@ -20,9 +20,9 @@ M.format = function()
 	local run_formatter = function(text)
 		local script_path = vim.fn.expand("<sfile>:p:h")
 		print(script_path)
-		-- local command = string.format("~/qmk-formatter -i %s", vim.fn.shellescape(text))
-		-- local formatted = vim.fn.systemlist(command)
-		-- return formatted
+		local command = string.format("~/qmk-formatter -i %s", vim.fn.shellescape(text))
+		local formatted = vim.fn.systemlist(command)
+		return formatted
 	end
 
 	local changes = {}
