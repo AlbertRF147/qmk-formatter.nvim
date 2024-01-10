@@ -18,8 +18,7 @@ M.format = function()
 	local root = syntax_tree[1]:root()
 
 	local run_formatter = function(text)
-		local script_path = vim.fn.stdpath("data") .. "/lazy/qmk-formatter"
-		print(script_path)
+		local script_path = vim.fn.stdpath("data") .. "/lazy/qmk-formatter.nvim"
 		local command =
 			string.format("%s/qmk-formatter -i %s", vim.fn.shellescape(script_path), vim.fn.shellescape(text))
 		local formatted = vim.fn.systemlist(command)
