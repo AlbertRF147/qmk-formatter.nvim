@@ -1,7 +1,5 @@
 local M = {}
 
-M.setup = function() end
-
 M.format = function()
 	local query_string = [[
         (
@@ -62,3 +60,10 @@ M.format = function()
 	end
 end
 
+M.setup = function(opts)
+	vim.api.nvim_create_user_command("QmkFormat", function()
+		M.format()
+	end, {})
+end
+
+return M
