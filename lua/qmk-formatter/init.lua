@@ -1,6 +1,7 @@
 local M = {}
 
 M.format = function()
+	print("Trying to format")
 	local query_string = [[
         (
              (identifier) @identifier (#eq? @identifier "LAYOUT_split_3x5_2")
