@@ -32,7 +32,7 @@ M.format = function()
 	for _, match in query:iter_matches(root, 0) do
 		for _, node in pairs(match) do
 			if node:type() == "argument_list" then
-				local text = vim.treesitter.query.get_node_text(node, 0)
+				local text = vim.treesitter.get_node_text(node, 0)
 
 				local row1, col1, row2, col2 = node:range()
 
