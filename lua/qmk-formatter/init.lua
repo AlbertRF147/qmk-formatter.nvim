@@ -1,5 +1,7 @@
 local M = {}
 
+M.setup = function() end
+
 M.format = function()
 	local query_string = [[
         (
