@@ -9,7 +9,8 @@ M.format = function()
     ]]
 
 	local language_tree = require("nvim-treesitter.parsers").get_parser()
-	local ok, query = pcall(vim.treesitter.query.parse, language_tree:lang(), query_string)
+	local Query = require("vim.treesitter.query")
+	local ok, query = pcall(Query.new, language_tree:lang(), query_string)
 	if not ok then
 		return
 	end
@@ -27,10 +28,10 @@ M.format = function()
 
 	local changes = {}
 
-	for _, match in query:iter_matches(root, 0, root:start(), root:end_()) do
+	for _, match in query:iter_matches(root, 0) do
 		for _, node in pairs(match) do
 			if node:type() == "argument_list" then
-				local text = vim.treesitter.get_node_text(node, 0)
+				local text = vim.treesitter.query.get_node_text(node, 0)
 
 				local row1, col1, row2, col2 = node:range()
 
@@ -59,10 +60,3 @@ M.format = function()
 	end
 end
 
-M.setup = function(opts)
-	vim.api.nvim_create_user_command("QmkFormat", function()
-		M.format()
-	end, {})
-end
-
-return M
