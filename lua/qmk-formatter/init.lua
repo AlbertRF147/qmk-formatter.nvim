@@ -11,6 +11,8 @@ M.format = function()
 	local language_tree = require("nvim-treesitter.parsers").get_parser()
 	local Query = require("vim.treesitter.query")
 	local ok, query = pcall(Query.new, language_tree:lang(), query_string)
+	print(ok)
+	print(query)
 	if not ok then
 		return
 	end
